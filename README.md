@@ -71,9 +71,10 @@ the code according the API doc**
 
 The `.csv` file is also a good choice for you create the new app or intent. 
 
-![Microsoft](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202025613.png)
+![csv](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202025613.png)
 
 
 The `sample.txt` is the data file to the google account. In the file, you can add the intent in the first line and utterances in 
 the second.
 
+![txt](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202030215.png)

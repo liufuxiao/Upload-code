@@ -14,7 +14,7 @@ var  rl = readline.createInterface({
 });
 
 
-rl.question("Please enter where you want to upload:",function(answer){
+rl.question("Please enter where you want to upload(google or Microsoft):",function(answer){
     if(answer=="Microsoft")
     {
         filename = Microsoftfilename;

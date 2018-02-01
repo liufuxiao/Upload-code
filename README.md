@@ -1,7 +1,7 @@
 # Upload-code
 The only file you need to execute is " upload.js". You are allowed to choose the destination of google or Microsoft
-which you upload to.But remember to update the account ID and the app ID in "add-utterances1.js" and "add-utterances2.js". 
-Besides,the "sample.txt" and " utterance.json" are the data files.When "upload.js" is working on, it will invoke the command 
+which you upload to. But remember to update the account ID and the app ID in "add-utterances1.js" and "add-utterances2.js". 
+Besides, the "sample.txt" and " utterance.json" are the data files.When "upload.js" is working on, it will invoke the command 
 line to execuate "add-utterances1.js" and "add-uttterances2.js" relatively according to your choice.
 
 The "utterance.json" is the data file of the Microsoft, you can add the intent and entity. Besides, you need to remember the 

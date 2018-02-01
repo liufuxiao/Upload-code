@@ -19,7 +19,6 @@ You are allowed to choose the destination you upload to：
 const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
 // ID of your LUIS app to which you want to add an utterance
 const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
-// The version number of your LUIS app
 ```
 
 The `sample.txt` and `utterance.json` are the data files. When "upload.js" is working on.

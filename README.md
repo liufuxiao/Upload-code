@@ -22,7 +22,7 @@ const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 // The version number of your LUIS app
 ```
 
-The `sample.txt` and `utterance.json` are the data files.When "upload.js" is working on.
+The `sample.txt` and `utterance.json` are the data files. When "upload.js" is working on.
 
 Tt will invoke the command line to execuate "add-utterances1.js" and "add-uttterances2.js" relatively according to your choice.
 
@@ -37,6 +37,8 @@ Tt will invoke the command line to execuate "add-utterances1.js" and "add-uttter
  
  
  ![Google](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202021207.png)
+ 
+ 
  
  
 # 2. Instructions of the data file
@@ -69,8 +71,9 @@ the code according the API doc**
 
 The `.csv` file is also a good choice for you create the new app or intent. 
 
-The `sample.txt` is the data file to the google account. 
+![Microsoft](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202025613.png)
 
-In the file, you can add the intent in the first line and utterances in 
+
+The `sample.txt` is the data file to the google account. In the file, you can add the intent in the first line and utterances in 
 the second.
 

@@ -22,7 +22,7 @@ fs.readFile('sample.txt','utf-8',function(err,data){
     var arg3 = 'create';
     var arg4 = '--training-phrases-parts';
     var arg5 = '--message-texts';
-    var filename = 'he.py'
+    var filename = 'add.py'
     exec('python'+' '+filename+' '+arg1+' '+arg2+' '+arg3+'   '+rows[0]+'   '+arg4+' '+rows[1]+'   '+arg5+' '+rows[2],function(err,stdout,stderr){
         if(err)
         {

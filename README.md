@@ -10,7 +10,13 @@ node upload.js
 You are allowed to choose the destination you upload to：
 
 1. Microsoft
+```
+http://127.0.0.1:8081/addMicrosoft
+```
 2. Google
+```
+http://127.0.0.1:8081/addGoogle
+```
 
 > **update the `account ID` and the `app ID` in `add-utterances1.js` and `add-utterances2.js`**
 

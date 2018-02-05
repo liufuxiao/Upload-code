@@ -1,3 +1,0 @@
-"room.cancellation - yes"
-"cancel" "cancellation"
-"Are you sure you want to cancel?" "Cancelled."

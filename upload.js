@@ -13,7 +13,7 @@ app.get('/addGoogle', function (req, res) {
 })
 
 app.get('/addMicrosoft', function (req, res) {
-    Microsoft.say();
+    Microsoft.create();
     res.end("successful!");
 })
 

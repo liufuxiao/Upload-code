@@ -2,8 +2,8 @@
 //to upload the data file.
 
 var express = require('express');
-var Google = require('./resource');
-var Microsoft = require('./add-utterances');
+var Google = require('./add-utterances1');
+var Microsoft = require('./add-utterances2');
 var app = express();
 
 

@@ -4,7 +4,7 @@
 //invoke the python file to finish it.
 
 
-function say(){
+function create(){
 var rp = require('request-promise');
 var fse = require('fs-extra');
 var path = require('path');
@@ -173,5 +173,5 @@ else {
 
 }}
 module.exports = {
-      say,
+      create,
 };

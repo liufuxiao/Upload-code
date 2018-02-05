@@ -91,15 +91,4 @@ The `utterance.json` is the data file of the Microsoft, you can add the intent a
 ]
 ```
 
-> **The intents in "utterance.json" have been created. If you want create the new app or the new intent, it's ok but you have to change
-the code according the API doc**
-
-The `.csv` file is also a good choice for you create the new app or intent. 
-
-![csv](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202025613.png)
-
-
-The `sample.txt` is the data file to the google account. In the file, you can add the intent in the first line and utterances in 
-the second.
-
-![txt](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202030215.png)
+> **The intents created for Google are written in `add-utterances1.js`, and the url belove provides more details<https://github.com/dialogflow/dialogflow-nodejs-client-v2/blob/master/samples/resource.js>

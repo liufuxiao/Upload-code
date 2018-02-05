@@ -2,44 +2,44 @@
 //to upload the data file.The "add-utterances1.js" and "add-utterances2.js" are 
 //the execution file of Microsoft and google relatively。
 
-var readline = require('readline');
+var express = require('express');
+var app = express();
+var fs = require("fs");
 var exec = require('child_process').exec;
-var Microsoftfilename = 'add-utterances1.js';
-var googlefilename = 'add-utterance2.js';
-var filename ="";
-
-var  rl = readline.createInterface({
-    input:process.stdin,
-    output:process.stdout
-});
+var filename1 ="add-utterances1.js";
+var filename2 ="add-utterances2.js";
 
 
-rl.question("Please enter where you want to upload(google or Microsoft):",function(answer){
-    if(answer=="Microsoft")
-    {
-        filename = Microsoftfilename;
-    }
-    else {
-        filename = googlefilename;
-    }
-    console.log(filename);
-
-
-   
-exec('node'+' '+filename,function(err,stdout,stderr) {
-    if (err) {
-        console.log('stderr', err);
-    }
-    if (stdout) {
-        console.log(stdout);
-    }
+app.get('/addMicrosoft', function (req, res) {
+    exec('node'+' '+filename1,function(err,stdout,stderr) {
+        if (err) {
+            console.log('stderr', err);
+        }
+        if (stdout) {
+            console.log(stdout);
+        }
     });
+     res.end( "successful" );
+})
 
-  // rl.close();
-});
+app.get('/addGoogle', function (req, res) {
+    exec('node'+' '+filename2,function(err,stdout,stderr) {
+        if (err) {
+            console.log('stderr', err);
+        }
+        if (stdout) {
+            console.log(stdout);
+        }
+    });
+        res.end("successful");
 
+})
 
-// close事件监听
-rl.on("close", function(){
-    process.exit(0);
-});
+var server = app.listen(8081, function () {
+
+    var host = server.address().address
+    var port = server.address().port
+
+    console.log("应用实例，访问地址为 http://%s:%s", host, port)
+
+})

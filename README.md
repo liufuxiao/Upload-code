@@ -49,7 +49,7 @@ Add utterance done
 Add utterance complete
 ```
 
-## The response of Google
+## The response of Google:
 
 ```
 Create Pizza intent:
@@ -91,4 +91,4 @@ The `utterance.json` is the data file of the Microsoft, you can add the intent a
 ]
 ```
 
-> **The intents created for Google are written in `add-utterances1.js`, and the url belove provides more details<https://github.com/dialogflow/dialogflow-nodejs-client-v2/blob/master/samples/resource.js>
+> **The intents created for Google are written in `add-utterances1.js`, and the url belove provides more details <https://github.com/dialogflow/dialogflow-nodejs-client-v2/blob/master/samples/resource.js>

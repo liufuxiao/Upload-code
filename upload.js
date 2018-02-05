@@ -14,25 +14,26 @@ app.get('/addMicrosoft', function (req, res) {
     exec('node'+' '+filename1,function(err,stdout,stderr) {
         if (err) {
             console.log('stderr', err);
+            res.end('stderr', err);
         }
         if (stdout) {
             console.log(stdout);
+            res.end(stdout);
         }
     });
-     res.end( "successful" );
 })
 
 app.get('/addGoogle', function (req, res) {
     exec('node'+' '+filename2,function(err,stdout,stderr) {
         if (err) {
             console.log('stderr', err);
+             res.end('stderr', err);
         }
         if (stdout) {
             console.log(stdout);
+            res.end(stdout);
         }
     });
-        res.end("successful");
-
 })
 
 var server = app.listen(8081, function () {

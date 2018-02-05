@@ -1,13 +1,16 @@
 Upload-code
 -------
+
+It is a Restful web service.
+
 # 1. Run:
-The only file you need to execute is `upload.js`. 
+By local server，you need to execute `upload.js` to start it. 
 
 ```shell
 node upload.js
 ```
 
-You are allowed to choose the destination you upload to：
+You are allowed to choose the destination you upload to by typing the url in the browser：
 
 1. Microsoft
 ```
@@ -27,21 +30,38 @@ const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
 const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 ```
 
-The `sample.txt` and `utterance.json` are the data files. When "upload.js" is working on.
-
-Tt will invoke the command line to execuate "add-utterances1.js" and "add-uttterances2.js" relatively according to your choice.
-
 
 ## The effect screenshot of Microsoft is showed as following:
 
  
- ![Microsoft](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202020922.png)
+ ![Microsoft](https://github.com/liufuxiao/Upload-code/blob/master/LUIS%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87.png)
  
  
 ## The effect screenshot of google is showed as following:
  
  
- ![Google](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180202021207.png)
+ ![Google](https://github.com/liufuxiao/Upload-code/blob/master/dialogflow%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87.png)
+ 
+## The response of Microsoft:
+
+```
+Add utterance done
+Add utterance complete
+```
+
+## The response of Google
+
+```
+Create Pizza intent:
+  ID: 7928a705-4eed-448e-94ca-2f9cb13327cd
+  Dispaly Name: Pizza
+  Priority: 500000
+  Output contexts:
+  Action:
+  Parameters:
+  Responses:
+  Platforms using default responses;
+  ```
  
  
  

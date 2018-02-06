@@ -2,7 +2,7 @@
   "name": "upload_service",
   "version": "1.0.0",
   "description": "It is a service for uploading to Google or Microsoft",
-  "main": "add-utterances1.js",
+  "main": "upload.js",
   "scripts": {
     "test": "make test"
   },

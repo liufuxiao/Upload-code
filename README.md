@@ -23,7 +23,8 @@ http://127.0.0.1:8081/addGoogle
 
 > Then type the `JSON data` in the body and finally click Send.
 
-> **update the `account ID` and the `app ID` in `add-utterances1.js` and `add-utterances2.js`**
+
+> **Remember update the `account ID` and the `app ID` in `add-utterances1.js` and `add-utterances2.js`**
 
 ```javascript
 // Programmatic key, available in luis.ai under Account Settings
@@ -43,7 +44,8 @@ const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
  
  
 # 2. Format of the submitting utterance
-You have to submit the utterance as JSON. 
+
+Submit the utterance as JSON. You have to write it carefully or JSON.parse() will send a err.
 
 ### A example of Microsoft:
 

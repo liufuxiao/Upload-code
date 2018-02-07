@@ -36,17 +36,16 @@ const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 ## The effect screenshot is showed as following:
 
  
- ![Microsoft]()
+ ![Microsoft](https://github.com/liufuxiao/Upload-code/blob/master/The%20picture%20of%20uploading.png)
  
  
  
+ 
+ 
+# 2. Format of the submitting utterance
+You have to submit the utterance as JSON. 
 
- 
- 
- 
- 
-# 2. Instructions of the data file
-The `utterance.json` is the data file of the Microsoft, you can add the intent and entity. 
+### A example of Microsoft:
 
 ```json
 [
@@ -70,4 +69,29 @@ The `utterance.json` is the data file of the Microsoft, you can add the intent a
 ]
 ```
 
-> **The intents created for Google are written in `add-utterances1.js`, and the url belove provides more details <https://github.com/dialogflow/dialogflow-nodejs-client-v2/blob/master/samples/resource.js>
+### A example of Google:
+
+```
+{
+  "displayName": "Pizza",
+  "trainingPhrases": [
+    {
+      "type": "TYPE_EXAMPLE",
+      "parts": [
+        {
+          "text": "Give me a "
+        },
+        {
+          "text": "small",
+          "entityType": "@size"
+        },
+        {
+          "text": "mushroom",
+          "entityType": "@room"
+        }
+      ]
+    }
+  ]
+}
+```
+

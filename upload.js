@@ -2,20 +2,27 @@
 //to upload the data file.
 
 var express = require('express');
-var Google = require('./add-utterances1');
-var Microsoft = require('./add-utterances2');
 var app = express();
+var Google = require('./resource');
+var Microsoft = require('./add-utterances');
+Mi = new Microsoft();
+Go = new Google();
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+app.use(express.static('public'));
 
-
-app.get('/addGoogle', function (req, res) {
-    Google.createIntents("roomrservation");
+app.post('/addMicrosoft', urlencodedParser, function (req, res) {
+    Mi.setName(JSON.parse(req.body.utterance));
+    Mi.sayhello();
     res.end("successful!");
 })
 
-app.get('/addMicrosoft', function (req, res) {
-    Microsoft.create();
+app.post('/addGoogle', urlencodedParser, function (req, res) {
+    Go.setPhase(JSON.parse(req.body.utterance));
+    Go.sayPhase("roomrservation");
     res.end("successful!");
 })
+
 
 var server = app.listen(8081, function () {
 

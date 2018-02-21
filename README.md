@@ -47,53 +47,37 @@ const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 
 Submit the utterance as JSON. You have to write it carefully or JSON.parse() will send a err.
 
-### A example of Microsoft:
 
-```json
-[
-    {
-        "text": "go to Seattle",
-        "intentName": "BookFlight",
-        "entityLabels": [
-            {
-                "entityName": "Location::LocationTo",
-                "startCharIndex": 6,
-                "endCharIndex": 12
-            }
-        ]
-    }
-,
-    {
-        "text": "I am Tom",
-        "intentName": "Other",
-        "entityLabels": []
-    }
-]
-```
-
-### A example of Google:
+### A example:
 
 ```
 {
-  "displayName": "Pizza",
-  "trainingPhrases": [
-    {
-      "type": "TYPE_EXAMPLE",
-      "parts": [
-        {
-          "text": "Give me a "
-        },
-        {
-          "text": "small",
-          "entityType": "@size"
-        },
-        {
-          "text": "mushroom",
-          "entityType": "@room"
-        }
-      ]
+        "displayName": "TurnOn",
+        "trainingPhrases": [
+            {
+                "type": "TYPE_EXAMPLE",
+                "parts": [
+                    {
+                        "text": "Please turn "
+                    },
+                    {
+                        "text": "on",
+                        "entityType": "@Operation"
+                    },
+                    {
+                        "text": " the "
+                    },
+                    {
+                        "text": "light",
+                        "entityType": "@Device"
+                    }
+                ]
+            },
+            {
+                "type": "TYPE_EXAMPLE",
+                "parts":[]
+            }
+        ]
     }
-  ]
-}
 ```
 

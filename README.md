@@ -77,7 +77,11 @@ The JSON format of Google and Microsoft has been unified.
             },
             {
                 "type": "TYPE_EXAMPLE",
-                "parts":[]
+                "parts":[
+                   {
+                       "text": "hello"
+                   }
+                ]
             }
         ]
     }

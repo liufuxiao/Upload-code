@@ -12,16 +12,11 @@ node upload.js
 
 You are allowed to choose the destination you upload to by typing the url in the Postman and choosing POST.
 
-1. Microsoft
 ```
-http://127.0.0.1:8081/addMicrosoft
-```
-2. Google
-```
-http://127.0.0.1:8081/addGoogle
+http://127.0.0.1:8081/upload
 ```
 
-> Then type the `JSON data` in the body and finally click Send.
+> Then type the `JSON data` and destination in the body and finally click Send.
 
 
 > **Remember update the `account ID` and the `app ID` in `add-utterances1.js` and `add-utterances2.js`**

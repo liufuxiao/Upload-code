@@ -11,16 +11,18 @@ var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static('public'));
 
-app.post('/addMicrosoft', urlencodedParser, function (req, res) {
-    Mi.setName(JSON.parse(req.body.utterance));
-    Mi.sayhello();
-    res.end("successful!");
-})
-
-app.post('/addGoogle', urlencodedParser, function (req, res) {
-    Go.setPhase(JSON.parse(req.body.utterance));
-    Go.sayPhase("roomrservation");
-    res.end("successful!");
+app.post('/upload', urlencodedParser, function (req, res) {
+    if(req.body.destination="Microsoft") {
+        Mi.setName(JSON.parse(req.body.utterance));
+        Mi.sayhello();
+        res.end("successful!");
+    }else if(req.body.destination="Google") {
+        Go.setPhase(JSON.parse(req.body.utterance));
+        Go.sayPhase("roomrservation");
+        res.end("successful!");
+    }else{
+        res.end("Please enter the correct destination.")
+    }
 })
 
 

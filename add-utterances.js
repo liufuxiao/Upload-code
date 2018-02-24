@@ -31,7 +31,7 @@ this.setName=function(myObj2){
     }
     var intent = myObj2.displayName;
     var i, j, z;
-    var utt = "[";
+    var utt = [];
     var a = new Array();
     for (i in myObj2.trainingPhrases) {
         var text = "";
@@ -43,26 +43,17 @@ this.setName=function(myObj2){
             }
             text = text + myObj2.trainingPhrases[i].parts[j].text;
         }
-        var add = "";
+        utt.push({text: text, intentName: intent, entityLabels:[]});
         for (z in a) {
-            add = add + '{"entityName":"' + a[z].getentityName().substring(1) + '","startCharIndex":' + a[z].getstartCharIndex();
-            add = add + ',"endCharIndex":' + a[z].getendCharIndex();
-            if (z != a.length - 1) {
-                add = add + '},';
-            } else {
-                add = add + '}';
-            }
-        }
-        utt = utt + '{"text":"' + text + '","intentName":"' + intent + '","entityLabels":[' + add;
-        if (i != myObj2.trainingPhrases.length - 1) {
-            utt = utt + ']},';
-        } else {
-            utt = utt + ']}]';
+                var entity =a[z].getentityName().substring(1);
+                var start = a[z].getstartCharIndex();
+                var end = a[z].getendCharIndex();
+                utt[i].entityLabels.push({entityName: entity,startCharIndex: start,endCharIndex: end});
         }
         a.splice(0, a.length);
-
     }
-        name = JSON.parse(utt);
+        //name = JSON.parse(utt);
+          name = utt;
         //console.log(name);
 };
 this.sayhello =function(){

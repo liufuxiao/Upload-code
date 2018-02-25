@@ -14,7 +14,7 @@ function createIntents() {
         console.log(Intent);
     };
 
-    this.sayPhase =function(projectId){
+    this.uploadPhase =function(projectId){
        const dialogflow = require('dialogflow');
        const contextsClient = new dialogflow.ContextsClient();
        const intentsClient = new dialogflow.IntentsClient();

@@ -9,54 +9,29 @@ var path = require('path');
 const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
 const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 const LUIS_versionId = "0.1";
-var name;
-this.setName=function(myObj2){
-    function Person(entityName, startCharIndex, endCharIndex) {
-        this.entityName = entityName;
-        this.startCharIndex = startCharIndex;
-        this.endCharIndex = endCharIndex;
-    }
-
-    Person.prototype = {
-        constructor: Person,
-        getentityName: function () {
-            return this.entityName;
-        },
-        getstartCharIndex: function () {
-            return this.startCharIndex;
-        },
-        getendCharIndex: function () {
-            return this.endCharIndex;
-        }
-    }
+var utterance;
+this.setPhase=function(myObj2){
     var intent = myObj2.displayName;
-    var i, j, z;
+    var i, j;
     var utt = [];
-    var a = new Array();
     for (i in myObj2.trainingPhrases) {
         var text = "";
+        utt.push({text: text, intentName: intent, entityLabels:[]});
         for (j in myObj2.trainingPhrases[i].parts) {
             if (myObj2.trainingPhrases[i].parts[j].entityType) {
-                e = myObj2.trainingPhrases[i].parts[j].entityType;
-                d = myObj2.trainingPhrases[i].parts[j].text.length - 1;
-                a.push(new Person(e, text.length, text.length + d));
+                utt[i].entityLabels.push({
+                    entityName: myObj2.trainingPhrases[i].parts[j].entityType.substring(1),
+                    startCharIndex: text.length,
+                    endCharIndex: text.length+myObj2.trainingPhrases[i].parts[j].text.length - 1
+                });
             }
             text = text + myObj2.trainingPhrases[i].parts[j].text;
         }
-        utt.push({text: text, intentName: intent, entityLabels:[]});
-        for (z in a) {
-                var entity =a[z].getentityName().substring(1);
-                var start = a[z].getstartCharIndex();
-                var end = a[z].getendCharIndex();
-                utt[i].entityLabels.push({entityName: entity,startCharIndex: start,endCharIndex: end});
-        }
-        a.splice(0, a.length);
+        utt[i].text=text;
     }
-        //name = JSON.parse(utt);
-          name = utt;
-        //console.log(name);
+          utterance = utt;
 };
-this.sayhello =function(){
+this.uploadPhase =function(){
 var configAddUtterance = {
     LUIS_subscriptionKey: LUIS_programmaticKey,
     LUIS_appId: LUIS_appId,
@@ -71,7 +46,7 @@ var addUtterance = async (config) => {
                 'Ocp-Apim-Subscription-Key': config.LUIS_subscriptionKey
             },
             json: true,
-            body: name
+            body: utterance
         });
         let results = await utterancePromise;
         console.log("Add utterance done");

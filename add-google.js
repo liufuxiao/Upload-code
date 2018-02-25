@@ -8,13 +8,7 @@
 function createIntents() {
     const grpc = require('grpc');
     const prompt = require('prompt');
-    var Intent;
-    this.setPhase=function(thyName){
-        Intent = thyName;
-        console.log(Intent);
-    };
-
-    this.uploadPhase =function(projectId){
+    this.uploadPhase =function(Intent,projectId){
        const dialogflow = require('dialogflow');
        const contextsClient = new dialogflow.ContextsClient();
        const intentsClient = new dialogflow.IntentsClient();

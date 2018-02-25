@@ -9,8 +9,7 @@ var path = require('path');
 const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
 const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 const LUIS_versionId = "0.1";
-var utterance;
-this.setPhase=function(myObj2){
+this.uploadPhase =function(myObj2){
     var intent = myObj2.displayName;
     var i, j;
     var utt = [];
@@ -29,9 +28,6 @@ this.setPhase=function(myObj2){
         }
         utt[i].text=text;
     }
-          utterance = utt;
-};
-this.uploadPhase =function(){
 var configAddUtterance = {
     LUIS_subscriptionKey: LUIS_programmaticKey,
     LUIS_appId: LUIS_appId,
@@ -46,7 +42,7 @@ var addUtterance = async (config) => {
                 'Ocp-Apim-Subscription-Key': config.LUIS_subscriptionKey
             },
             json: true,
-            body: utterance
+            body: utt
         });
         let results = await utterancePromise;
         console.log("Add utterance done");

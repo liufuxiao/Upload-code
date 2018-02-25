@@ -3,8 +3,8 @@
 
 var express = require('express');
 var app = express();
-var Google = require('./resource');
-var Microsoft = require('./add-utterances');
+var Google = require('./add-Google');
+var Microsoft = require('./add-Microsoft');
 Mi = new Microsoft();
 Go = new Google();
 var bodyParser = require('body-parser');

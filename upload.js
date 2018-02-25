@@ -13,13 +13,11 @@ app.use(express.static('public'));
 
 app.post('/upload', urlencodedParser, function (req, res) {
     if(req.body.destination="Microsoft") {
-        Mi.setPhase(JSON.parse(req.body.utterance));
-        Mi.uploadPhase();
+        Mi.uploadPhase(JSON.parse(req.body.utterance));
         res.end("successful!");
     }else if(req.body.destination="Google") {
-        Go.setPhase(JSON.parse(req.body.utterance));
         var projectId ="roomrservation";
-        Go.uploadPhase(projectId);
+        Go.uploadPhase(JSON.parse(req.body.utterance),projectId);
         res.end("successful!");
     }else{
         res.end("Please enter the correct destination.")

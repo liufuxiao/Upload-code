@@ -10,24 +10,20 @@ const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
 const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 const LUIS_versionId = "0.1";
 this.uploadPhase =function(myObj2){
-    var intent = myObj2.displayName;
-    var i, j;
-    var utt = [];
-    for (i in myObj2.trainingPhrases) {
-        var text = "";
-        utt.push({text: text, intentName: intent, entityLabels:[]});
-        for (j in myObj2.trainingPhrases[i].parts) {
-            if (myObj2.trainingPhrases[i].parts[j].entityType) {
-                utt[i].entityLabels.push({
-                    entityName: myObj2.trainingPhrases[i].parts[j].entityType.substring(1),
-                    startCharIndex: text.length,
-                    endCharIndex: text.length+myObj2.trainingPhrases[i].parts[j].text.length - 1
-                });
-            }
-            text = text + myObj2.trainingPhrases[i].parts[j].text;
+utt=[];
+myObj2.trainingPhrases.map(function(item,index){
+    utt.push({text: "", intentName: myObj2.displayName, entityLabels: []})
+    item.parts.map(function(item1,index1){
+        if(item1.entityType){
+            utt[index].entityLabels.push({
+                entityName: item1.entityType.substring(1),
+                startCharIndex: utt[index].text.length,
+                endCharIndex: item1.text.length+utt[index].text.length-1
+            });
         }
-        utt[i].text=text;
-    }
+        utt[index].text=[utt[index].text,item1.text].join("");
+    });
+});
 var configAddUtterance = {
     LUIS_subscriptionKey: LUIS_programmaticKey,
     LUIS_appId: LUIS_appId,

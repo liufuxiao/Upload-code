@@ -12,10 +12,10 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static('public'));
 
 app.post('/upload', urlencodedParser, function (req, res) {
-    if(req.body.destination="Microsoft") {
+    if(req.body.destination=="Microsoft") {
         Mi.uploadPhase(JSON.parse(req.body.utterance));
         res.end("successful!");
-    }else if(req.body.destination="Google") {
+    }else if(req.body.destination=="Google") {
         var projectId ="roomrservation";
         Go.uploadPhase(JSON.parse(req.body.utterance),projectId);
         res.end("successful!");

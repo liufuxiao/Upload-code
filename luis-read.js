@@ -35,6 +35,7 @@ function read(){
                     var a = response.filter(function(item){
                     return item.intentLabel === intent;
                 });
+                    console.log(a);
                     a.map(function(item,index){
                         //example.push({"text": item.text,"id": item.id});
                         utterance.trainingPhrases.push({
@@ -61,12 +62,12 @@ function read(){
                         return next;
                     },0);
                 });
-                    /*
+
                     console.log(utterance);
                     utterance.trainingPhrases.map(function(item3,index3){
                     console.log(item3.parts);
 
-                });*/
+                });
                 return { request: options.body, response: response };
             } catch (err) {
                 throw err;

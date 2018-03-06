@@ -1,27 +1,29 @@
-Upload Service
+Manageing Service
 -------
 
-It is a Restful web service which can help you upload your utterances easily.
+It is a Restful web service which can help you achieve adding, deleting, reading and updating utterances.
 
 # 1. Run:
-By local server，you need to execute `upload.js` to start it. 
+By local server，you need to execute `manage.js` to start it. 
 
 ```shell
-node upload.js
+node manage.js
 ```
 
-You are allowed to choose the destination you upload to by typing the url in the Postman and choosing POST.
+You are allowed to choose the functions by typing the url in the Postman and choosing POST.
 
 ```
-http://127.0.0.1:8081/upload
+http://127.0.0.1:8081/add
+http://127.0.0.1:8081/delete
+http://127.0.0.1:8081/read
+http://127.0.0.1:8081/update
 ```
 
-> Then type the `JSON data` and `destination` in the body and finally click Send.
-
- ![Body](https://github.com/liufuxiao/Upload-code/blob/master/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180224144307.png)
+> Then type the `JSON data`, `destination` and other parameters in the body and finally click Send.
 
 
-> **Remember update the `account ID` and the `app ID` in `add-utterances1.js` and `add-utterances2.js`**
+
+> **Remember update the `account ID` and the `app ID`**
 
 ```javascript
 // Programmatic key, available in luis.ai under Account Settings
@@ -29,15 +31,6 @@ const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
 // ID of your LUIS app to which you want to add an utterance
 const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 ```
-
-
-## The effect screenshot is showed as following:
-
- 
- ![Microsoft](https://github.com/liufuxiao/Upload-code/blob/master/The%20picture%20of%20uploading.png)
- 
- 
- 
  
  
 # 2. Format of the submitting utterance

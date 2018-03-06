@@ -32,6 +32,7 @@ function read(){
                     var a = response.filter(function(item){
                     return item.intentLabel === intent;
                 });
+                    //The following console.log is to get the id.
                     console.log(a);
                     a.map(function(item,index){
                         utterance.trainingPhrases.push({

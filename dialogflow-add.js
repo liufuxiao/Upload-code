@@ -18,3 +18,4 @@ function createIntents() {
 });
     };
 }
+module.exports=createIntents;

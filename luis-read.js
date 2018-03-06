@@ -1,7 +1,5 @@
 function read(){
     var rp = require('request-promise');
-    var fse = require('fs-extra');
-    var path = require('path');
     const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
     const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
     const LUIS_versionId = "0.1";

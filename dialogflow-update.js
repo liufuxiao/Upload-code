@@ -1,6 +1,4 @@
 function updateIntent(){
-    const grpc = require('grpc');
-    const prompt = require('prompt');
     this.updateIntent=function(intentname,Intent,projectId) {
         const dialogflow = require('dialogflow');
         const intentsClient = new dialogflow.IntentsClient();

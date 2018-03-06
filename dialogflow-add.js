@@ -6,7 +6,7 @@ function createIntents() {
        const agentPath = intentsClient.projectAgentPath(projectId);
     const Request = {
         parent: agentPath,
-        intent: Intent,
+        intent: Intent
     };
     intentsClient
         .createIntent(Request)

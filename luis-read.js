@@ -4,7 +4,6 @@ function read(){
     const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
     const LUIS_versionId = "0.1";
     this.Read =function(intent){
-        var example=[];
         var utterance ={
             "displayName": intent,
             "trainingPhrases": []
@@ -35,7 +34,6 @@ function read(){
                 });
                     console.log(a);
                     a.map(function(item,index){
-                        //example.push({"text": item.text,"id": item.id});
                         utterance.trainingPhrases.push({
                             "type":"TYPE_EXAMPLE",
                             "parts":[]

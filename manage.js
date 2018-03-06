@@ -1,14 +1,13 @@
-
 var express = require('express');
 var app = express();
-var Google = require('./dialogflow-add');
 var Microsoft = require('./luis-add');
 var Re =require('./luis-read');
 var De =require('./luis-delete');
+var Up2 =require('./luis-update');
+var Google = require('./dialogflow-add');
 var Di =require('./dialogflow-read');
 var Dd =require('./dialogflow-delete');
 var Up1 =require('./dialogflow-update');
-var Up2 =require('./luis-update');
 Mi = new Microsoft();
 Go = new Google();
 re =new Re();
@@ -32,7 +31,7 @@ app.post('/add', urlencodedParser, function (req, res) {
     }else{
         res.end("Please enter the correct destination.")
     }
-})
+});
 
 app.post('/read', urlencodedParser, function (req, res) {
     if(req.body.destination==="Google"){
@@ -46,7 +45,7 @@ app.post('/read', urlencodedParser, function (req, res) {
     }else{
         res.end("Please enter the correct destination")
     }
-})
+});
 
 app.post('/delete', urlencodedParser, function (req, res) {
     if(req.body.destination==="Google") {
@@ -60,7 +59,7 @@ app.post('/delete', urlencodedParser, function (req, res) {
     }else{
         res.end("Please enter the correct destination")
     }
-})
+});
 
 app.post('/update', urlencodedParser, function (req, res) {
     if(req.body.destination==="Google") {
@@ -75,13 +74,13 @@ app.post('/update', urlencodedParser, function (req, res) {
     }else{
         res.end("Please enter the correct destination")
     }
-})
+});
 
 var server = app.listen(8081, function () {
 
-    var host = server.address().address
-    var port = server.address().port
+    var host = server.address().address;
+    var port = server.address().port;
 
     console.log("应用实例，访问地址为 http://%s:%s", host, port)
 
-})
+});

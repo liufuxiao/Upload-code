@@ -1,4 +1,4 @@
-Manageing Service
+Managing Service
 -------
 
 It is a Restful web service which can help you achieve adding, deleting, reading and updating utterances.

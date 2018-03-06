@@ -1,8 +1,4 @@
-//This is upload file of of the Microsoft. Before you execute it, you must have to
-//download the access token file and set the environment variable.
-
-
-function say(){
+function add(){
 var rp = require('request-promise');
 var fse = require('fs-extra');
 var path = require('path');
@@ -10,20 +6,20 @@ const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
 const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 const LUIS_versionId = "0.1";
 this.uploadPhase =function(myObj2){
-utt=[];
-myObj2.trainingPhrases.map(function(item,index){
-    utt.push({text: "", intentName: myObj2.displayName, entityLabels: []})
-    item.parts.map(function(item1,index1){
-        if(item1.entityType){
-            utt[index].entityLabels.push({
-                entityName: item1.entityType.substring(1),
-                startCharIndex: utt[index].text.length,
-                endCharIndex: item1.text.length+utt[index].text.length-1
-            });
-        }
-        utt[index].text=[utt[index].text,item1.text].join("");
+    utt=[];
+    myObj2.trainingPhrases.map(function(item,index){
+        utt.push({text: "", intentName: myObj2.displayName, entityLabels: []})
+        item.parts.map(function(item1,index1){
+            if(item1.entityType){
+                utt[index].entityLabels.push({
+                    entityName: item1.entityType.substring(1),
+                    startCharIndex: utt[index].text.length,
+                    endCharIndex: item1.text.length+utt[index].text.length-1
+                });
+            }
+            utt[index].text=[utt[index].text,item1.text].join("");
+        });
     });
-});
 var configAddUtterance = {
     LUIS_subscriptionKey: LUIS_programmaticKey,
     LUIS_appId: LUIS_appId,
@@ -45,14 +41,7 @@ var addUtterance = async (config) => {
 }
 var sendUtteranceToApi = async (options) => {
     try {
-        var response;
-        if (options.method === 'POST') {
-            response = await rp.post(options);
-            //console.log(options.body);
-            //console.log(response);
-        } else if (options.method === 'GET') {
-            response = await rp.get(options);
-        }
+        var response = await rp.post(options);
         return { request: options.body, response: response };
     } catch (err) {
         throw err;
@@ -63,4 +52,4 @@ var sendUtteranceToApi = async (options) => {
             console.log("Add utterance complete.");
         });};
 }
-module.exports = say;
+module.exports = add;

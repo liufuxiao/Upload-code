@@ -37,7 +37,7 @@ const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
 
 Submit the utterance as JSON. You have to write it carefully or JSON.parse() will send a err.
 
-The JSON format of Google and Microsoft has been unified.
+The JSON format of luis and dialogflow has been unified.
 
 
 ### A example:

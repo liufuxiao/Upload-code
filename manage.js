@@ -61,6 +61,22 @@ app.post('/delete', urlencodedParser, function (req, res) {
         res.end("Please enter the correct destination")
     }
 });
+
+app.post('/update', urlencodedParser, function (req, res) {
+    if(req.body.destination==="Google") {
+        //var intentId ='projects/roomrservation/agent/intents/791f16e2-d0d5-4012-9d9c-34307cf07cfe';
+        //var projectId = 'roomrservation'
+        up.updateIntent(req.body.intentId,JSON.parse(req.body.utterance),req.body.projectId);
+        res.end("successful!");
+    }else if(req.body.destination==="Microsoft") {
+        //var exampleId="-69067"
+        up2.update(JSON.parse(req.body.utterance),req.body.exampleId);
+        res.end("successful!");
+    }else{
+        res.end("Please enter the correct destination")
+    }
+});
+
 var server = app.listen(8081, function () {
 
     var host = server.address().address;

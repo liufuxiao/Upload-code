@@ -1,11 +1,11 @@
 const dialogflow = require('dialogflow');
-const updateIntent=(intentname,Intent,projectId) => {
+const updateIntent=(intentname,intent,projectId) => {
         const intentsClient = new dialogflow.IntentsClient();
         const agentPath = intentsClient.projectAgentPath(projectId);
         const request = {name: intentname};
         const Request1 = {
             parent: agentPath,
-            intent: Intent,
+            intent: intent,
         };
         return intentsClient.deleteIntent(request)
             .then((responses) => {

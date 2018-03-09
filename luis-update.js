@@ -1,11 +1,16 @@
-function update() {
-    this.update = function (myObj2,exampleId) {
-        var D = require('./luis-delete');
-        var Mi = require('./luis-add');
-        d = new D();
-        M = new Mi();
-        d.deleteUtt(exampleId);
-        M.uploadPhase(myObj2);
+const ld = require('./luis-delete');
+const la = require('./luis-add');
+
+const update = (myObj2,exampleId) =>{
+        return ld.delete(exampleId)
+            .then((responses) => {
+                la.add(myObj2);
+                console.log(responses);
+            })
+            .catch((err) =>{
+                console.log("ERR:",err);
+            })
+
     };
-}
-module.exports=update;
+
+exports.update=update;

@@ -1,34 +1,35 @@
-
-var express = require('express');
-var app = express();
-var Microsoft = require('./luis-add');
-var Re =require('./luis-read');
-var De =require('./luis-delete');
-var Up2 =require('./luis-update');
-var Google = require('./dialogflow-add');
-var Ea =require('./dialogflow-read');
-var Dd =require('./dialogflow-delete');
-var Up1 =require('./dialogflow-update');
-Mi = new Microsoft();
-re =new Re();
-de =new De();
-up2 =new Up2();
-Go = new Google();
-di =new Ea();
-dd =new Dd();
-up =new Up1();
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+const express = require('express');
+const app = express();
+const la = require('./luis-add');
+const lr =require('./luis-read');
+const ld =require('./luis-delete');
+const lu =require('./luis-update');
+const da = require('./dialogflow-add');
+const dr =require('./dialogflow-read');
+const dd =require('./dialogflow-delete');
+const du =require('./dialogflow-update');
+const bodyParser = require('body-parser');
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static('public'));
-
+app.use(bodyParser.json());
 app.post('/add', urlencodedParser, function (req, res) {
     if(req.body.destination==="Microsoft") {
-        Mi.uploadPhase(JSON.parse(req.body.utterance));
-        res.end("successful!");
+        la.add(JSON.parse(req.body.utterance))
+            .then((responses) => {
+                console.log(responses);
+            })
+            .catch(err=>{
+                console.log('ERROR:', err);
+            })
     }else if(req.body.destination==="Google") {
         //var projectId ="roomrservation";
-        Go.uploadPhase(JSON.parse(req.body.utterance),req.body.projectId);
-        res.end("successful!");
+        da.add(JSON.parse(req.body.utterance),req.body.projectId)
+            .then((responses) => {
+                console.log(responses);
+            })
+            .catch(err => {
+                console.log('ERROR:', err);
+            })
     }else{
         res.end("Please enter the correct destination.")
     }
@@ -37,12 +38,28 @@ app.post('/add', urlencodedParser, function (req, res) {
 app.post('/read', urlencodedParser, function (req, res) {
     if(req.body.destination==="Google"){
         //var intentId ='projects/roomrservation/agent/intents/791f16e2-d0d5-4012-9d9c-34307cf07cfe';
-        di.Read(req.body.intentId);
-        res.end("successful!");
+        dr.read(req.body.intentId)
+            .then(responses =>{
+             return dr.tran(responses);
+            })
+            .then(utterance =>{
+                console.log(utterance);
+            })
+            .catch(err =>{
+                console.log(`Failed to get intent`, err);
+            })
     }else if(req.body.destination==="Microsoft") {
         //var intentId ="TurnOn";
-        re.Read(req.body.intentId);
-        res.end("successful!");
+        lr.read()
+            .then(responses => {
+                return lr.tran(responses,req.body.intentId);
+            })
+            .then(utterance =>{
+                console.log(utterance);
+            })
+            .catch(err=>{
+                console.log('Failed to get intent:', err);
+            })
     }else{
         res.end("Please enter the correct destination")
     }
@@ -51,12 +68,24 @@ app.post('/read', urlencodedParser, function (req, res) {
 app.post('/delete', urlencodedParser, function (req, res) {
     if(req.body.destination==="Google") {
         //var intentId ='projects/roomrservation/agent/intents/791f16e2-d0d5-4012-9d9c-34307cf07cfe';
-        dd.deleteIntent(req.body.intentId);
-        res.end("successful!");
+        dd.delete(req.body.intentId)
+            .then((responses) => {
+                res.end(`delete successfully`);
+                console.log(responses);
+            })
+            .catch(err => {
+                console.log(`Failed to delete intent:`, err);
+            });
     }else if(req.body.destination==="Microsoft") {
         //var exampleId =' -69067';
-        de.deleteUtt(req.body.exampleId);
-        res.end("successful!");
+        ld.delete(req.body.exampleId)
+            .then((responses) => {
+                console.log(responses);
+                res.end(responses.code);
+            })
+            .catch(err=>{
+                console.log('ERROR:', err);
+            })
     }else{
         res.end("Please enter the correct destination")
     }
@@ -66,22 +95,33 @@ app.post('/update', urlencodedParser, function (req, res) {
     if(req.body.destination==="Google") {
         //var intentId ='projects/roomrservation/agent/intents/791f16e2-d0d5-4012-9d9c-34307cf07cfe';
         //var projectId = 'roomrservation'
-        up.updateIntent(req.body.intentId,JSON.parse(req.body.utterance),req.body.projectId);
-        res.end("successful!");
+        du.update(req.body.intentId,JSON.parse(req.body.utterance),req.body.projectId)
+            .then((responses) =>{
+                res.end("Update successfully!");
+                console.log(responses);
+            })
+            .catch(err =>{
+                console.log("Failed to update:",err);
+            })
     }else if(req.body.destination==="Microsoft") {
         //var exampleId="-69067"
-        up2.update(JSON.parse(req.body.utterance),req.body.exampleId);
-        res.end("successful!");
+        lu.update(JSON.parse(req.body.utterance),req.body.exampleId)
+            .then(()=>{
+                console.log("successfully");
+            })
+            .catch(err =>{
+                console.log("Failed to update:",err);
+            })
     }else{
         res.end("Please enter the correct destination")
     }
 });
 
-var server = app.listen(8081, function () {
+const server = app.listen(8081, function () {
 
-    var host = server.address().address;
-    var port = server.address().port;
+    let host = server.address().address;
+    let port = server.address().port;
 
-    console.log("应用实例，访问地址为 http://%s:%s", host, port)
+    console.log("Address is:  http://%s:%s", host, port)
 
 });

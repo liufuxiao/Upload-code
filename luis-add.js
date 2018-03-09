@@ -1,13 +1,10 @@
-function add(){
-var rp = require('request-promise');
-const LUIS_programmaticKey = "67fa05fd36ca4d4cbc8c2eb91e41dc10";
-const LUIS_appId = "6a18e3d5-7267-4b94-b1c4-8944b866fbc8";
-const LUIS_versionId = "0.1";
-this.uploadPhase =function(myObj2){
-    utt=[];
-    myObj2.trainingPhrases.map(function(item,index){
-        utt.push({text: "", intentName: myObj2.displayName, entityLabels: []})
-        item.parts.map(function(item1,index1){
+const rp = require('request-promise');
+const LUIS =require('./LUIS_account');
+const uploadPhase =(myObj2)=>{
+    let utt=[];
+    myObj2.trainingPhrases.map((item,index)=>{
+        utt.push({text: "", intentName: myObj2.displayName, entityLabels: []});
+        item.parts.map(item1 =>{
             if(item1.entityType){
                 utt[index].entityLabels.push({
                     entityName: item1.entityType.substring(1),
@@ -18,14 +15,14 @@ this.uploadPhase =function(myObj2){
             utt[index].text=[utt[index].text,item1.text].join("");
         });
     });
-var configAddUtterance = {
-    LUIS_subscriptionKey: LUIS_programmaticKey,
-    LUIS_appId: LUIS_appId,
-    LUIS_versionId: LUIS_versionId,
-    uri: "https://westus.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appId}/versions/{versionId}/examples".replace("{appId}", LUIS_appId).replace("{versionId}", LUIS_versionId)
+const configAddUtterance = {
+    LUIS_subscriptionKey: LUIS.programmaticKey,
+    LUIS_appId: LUIS.appId,
+    LUIS_versionId: LUIS.versionId,
+    uri: `https://westus.api.cognitive.microsoft.com/luis/api/v2.0/apps/${LUIS.appId}/versions/${LUIS.versionId}/examples`
 };
-var addUtterance = async (config) => {
-        var utterancePromise = sendUtteranceToApi({
+const addUtterance = async (config) => {
+        return sendUtteranceToApi({
             uri: config.uri,
             method: 'POST',
             headers: {
@@ -34,20 +31,16 @@ var addUtterance = async (config) => {
             json: true,
             body: utt
         });
-        let results = await utterancePromise;
-        console.log("Add utterance done");
-}
-var sendUtteranceToApi = async (options) => {
+};
+const sendUtteranceToApi = async (options) => {
     try {
-        var response = await rp.post(options);
-        return { request: options.body, response: response };
+        return await rp.post(options);
     } catch (err) {
         throw err;
     }
-}
-    addUtterance(configAddUtterance)
-        .then(() => {
-            console.log("Add utterance complete.");
-        });};
-}
-module.exports = add;
+};
+    return addUtterance(configAddUtterance);
+};
+
+exports.add=uploadPhase;
+

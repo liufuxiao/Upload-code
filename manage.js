@@ -16,19 +16,19 @@ app.post('/add', urlencodedParser, function (req, res) {
     if(req.body.destination==="Microsoft") {
         la.add(JSON.parse(req.body.utterance))
             .then((responses) => {
-                console.log(responses);
+                res.send(responses);
             })
             .catch(err=>{
-                console.log('ERROR:', err);
+                res.send('ERROR:', err);
             })
     }else if(req.body.destination==="Google") {
         //var projectId ="roomrservation";
         da.add(JSON.parse(req.body.utterance),req.body.projectId)
             .then((responses) => {
-                console.log(responses);
+                res.send(responses);
             })
             .catch(err => {
-                console.log('ERROR:', err);
+                res.send('ERROR:', err);
             })
     }else{
         res.end("Please enter the correct destination.")
@@ -40,25 +40,19 @@ app.post('/read', urlencodedParser, function (req, res) {
         //var intentId ='projects/roomrservation/agent/intents/791f16e2-d0d5-4012-9d9c-34307cf07cfe';
         dr.read(req.body.intentId)
             .then(responses =>{
-             return dr.tran(responses);
-            })
-            .then(utterance =>{
-                console.log(utterance);
+             res.send (dr.tran(responses));
             })
             .catch(err =>{
-                console.log(`Failed to get intent`, err);
+                res.send(`Failed to get intent`, err);
             })
     }else if(req.body.destination==="Microsoft") {
         //var intentId ="TurnOn";
         lr.read()
             .then(responses => {
-                return lr.tran(responses,req.body.intentId);
-            })
-            .then(utterance =>{
-                console.log(utterance);
+                res.send(lr.tran(responses,req.body.intentId));
             })
             .catch(err=>{
-                console.log('Failed to get intent:', err);
+                res.send('Failed to get intent:', err);
             })
     }else{
         res.end("Please enter the correct destination")
@@ -70,21 +64,19 @@ app.post('/delete', urlencodedParser, function (req, res) {
         //var intentId ='projects/roomrservation/agent/intents/791f16e2-d0d5-4012-9d9c-34307cf07cfe';
         dd.delete(req.body.intentId)
             .then((responses) => {
-                res.end(`delete successfully`);
-                console.log(responses);
+                res.send(responses);
             })
             .catch(err => {
-                console.log(`Failed to delete intent:`, err);
+                res.send(`Failed to delete intent:`, err);
             });
     }else if(req.body.destination==="Microsoft") {
         //var exampleId =' -69067';
         ld.delete(req.body.exampleId)
             .then((responses) => {
-                console.log(responses);
-                res.end(responses.code);
+                res.send(responses);
             })
             .catch(err=>{
-                console.log('ERROR:', err);
+                res.send('ERROR:', err);
             })
     }else{
         res.end("Please enter the correct destination")
@@ -97,20 +89,19 @@ app.post('/update', urlencodedParser, function (req, res) {
         //var projectId = 'roomrservation'
         du.update(req.body.intentId,JSON.parse(req.body.utterance),req.body.projectId)
             .then((responses) =>{
-                res.end("Update successfully!");
-                console.log(responses);
+                res.send(responses);
             })
             .catch(err =>{
-                console.log("Failed to update:",err);
+                res.send("Failed to update:",err);
             })
     }else if(req.body.destination==="Microsoft") {
         //var exampleId="-69067"
         lu.update(JSON.parse(req.body.utterance),req.body.exampleId)
-            .then(()=>{
-                console.log("successfully");
+            .then((responses)=>{
+                res.send(responses);
             })
             .catch(err =>{
-                console.log("Failed to update:",err);
+                res.send("Failed to update:",err);
             })
     }else{
         res.end("Please enter the correct destination")

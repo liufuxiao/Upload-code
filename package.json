@@ -1,10 +1,10 @@
 {
-  "name": "upload_service",
+  "name": "managing service",
   "version": "1.0.0",
-  "description": "It is a service for uploading to Google or Microsoft",
-  "main": "upload.js",
+  "description": "It is a service for adding, deleting, reading and updating utterances",
+  "main": "manage.js",
   "scripts": {
-    "upload": "node upload.js"
+    "upload": "node manage.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,10 @@
     "api",
     "dialoogflow",
     "luis",
-    "upload"
+    "add",
+    "delete",
+    "read",
+    "update"
   ],
   "dependencies": {
     "express": "^4.16.2",
@@ -32,5 +35,4 @@
     "dialogflow": "^0.1.0",
     "yargs": "^3.32.0",
     "request-promise": "^4.2.2"
-  }
 }
